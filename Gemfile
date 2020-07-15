@@ -15,6 +15,8 @@ gem 'puma', '~> 4.1'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+# Use JWT for authentication
+gem 'jwt'
 # Use Hirb to view rals console, in tabular form
 gem 'hirb', '~> 0.7.3'
 
