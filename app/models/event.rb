@@ -8,6 +8,18 @@ class Event < ApplicationRecord
 
   belongs_to :user
 
+  validate do
+    begin
+      if start_time.to_date.past? || end_time.to_date.past?
+        errors.add(:time, "Date/time should not be in the past")
+      elsif start_time > end_time
+        errors.add(:time, "Start date/time should be less than End date/time")
+      end
+    rescue StandardError
+      self.errors.add(:time, e.message)
+    end
+  end
+
   def check_is_free
     return if !is_free
     self.gate_fee = 0

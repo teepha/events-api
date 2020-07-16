@@ -20,9 +20,10 @@ module ExceptionHandler
     end
 
     rescue_from ActiveRecord::RecordInvalid do |e|
+      error = e.message.split(": ").last
       error_msg = Message.invalid_credentials
       error_msg = Message.account_exists if e.message.match?(/already been taken/)
-      json_response({ error: error_msg }, :unprocessable_entity)
+      json_response({ error: error || error_msg }, :unprocessable_entity)
     end
   end
 
