@@ -2,33 +2,33 @@ class EventsController < ApplicationController
   before_action :set_event, except: [:create, :index, :active_events]
 
   def index
-    @events = if is_admin? 
+    events = if is_admin? 
                     Event.all.order('created_at DESC')
                   else
                     current_user.events.order('created_at DESC')
                   end
-    return json_response({ events: @events }) unless @events.empty?
+    return json_response({ events: events }) unless events.empty?
     json_response({ message: Message.records_not_found('events') })
   end
 
   def active_events
-    @events = if is_admin? 
-                    Event.where(is_active: true).order('created_at DESC')
+    events = if is_admin?
+                    Event.active_events
                   else
-                    current_user.events.where(is_active: true).order('created_at DESC')
+                    current_user.events.active_events
                   end
-    return json_response({ events: @events }) unless @events.empty?
+    return json_response({ events: events }) unless events.empty?
     json_response({ message: Message.records_not_found('active events') })
   end
 
   def create
-    @event = current_user.events.create!(event_params)
-    json_response({ message: Message.create_success('Event'), data: @event }, :created)
+    event = current_user.events.create!(event_params)
+    json_response({ message: Message.create_success('Event'), data: event }, :created)
   end
 
   def generate_invitation_url
-    @url = "#{request.protocol}#{request.host_with_port}/events/#{@event.id}/invitation"
-    json_response({ message: Message.create_success('Invitation link'), event_link: @url })
+    url = "#{request.protocol}#{request.host_with_port}/events/#{@event.id}/invitation"
+    json_response({ message: Message.create_success('Invitation link'), event_link: url })
   end
 
   def show
@@ -68,6 +68,6 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id])
+    @event ||= Event.find(params[:id])
   end
 end
