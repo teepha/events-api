@@ -10,6 +10,9 @@ class EventsController < ApplicationController
     return json_response({ events: @events })
   end
 
+  def active_events
+  end
+
   def create
     @event = current_user.events.create!(event_params)
     json_response({ message: Message.create_success('Event'), data: @event }, :created)
