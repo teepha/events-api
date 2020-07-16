@@ -12,7 +12,7 @@ module ExceptionHandler
     rescue_from ExceptionHandler::InvalidToken, with: :four_twenty_two
 
     rescue_from ActiveRecord::RecordNotFound do |e|
-      json_response({ error: Message.record_not_found }, :not_found)
+      json_response({ error: Message.not_found }, :not_found)
     end
 
     rescue_from ExceptionHandler::AuthenticationError do |e|

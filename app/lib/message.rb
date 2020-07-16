@@ -3,6 +3,14 @@ class Message
     "Sorry, #{record} not found."
   end
 
+  def self.delete_success(record = 'Record')
+    "#{record} was deleted successfully"
+  end
+
+  def self.update_success(record = 'Record')
+    "#{record} was updated successfully"
+  end
+
   def self.invalid_credentials
     'Invalid credentials'
   end
@@ -19,8 +27,8 @@ class Message
     'Unauthorized request'
   end
 
-  def self.account_created
-    'Account created successfully'
+  def self.create_success(record = 'record')
+    "#{record} created successfully"
   end
 
   def self.account_not_created
@@ -37,5 +45,13 @@ class Message
 
   def self.expired_token
     'Sorry, your token has expired. Please login to continue.'
+  end
+
+  def self.event_not_active
+    'Sorry, this event is not active yet :('
+  end
+
+  def self.event_invitation
+    "Event details retrieved successfully"
   end
 end
