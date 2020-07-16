@@ -2,6 +2,13 @@ class UsersController < ApplicationController
   skip_before_action :authorize_request, only: :create
   before_action :set_user, only: [:show, :update]
 
+  def index
+    return json_response({ error: Message.unauthorized }, 403) unless is_admin?
+    @users = User.all.order('created_at DESC') 
+    return render json: @users, adapter: :json unless @users.empty?
+    json_response({ message: Message.records_not_found('users') })
+  end
+
   def create
     user = User.create!(user_params)
     auth_token = AuthenticateUser.new(user.email, user.password).call

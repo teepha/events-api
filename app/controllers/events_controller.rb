@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, except: [:create, :index, :active_events, :event_invite]
+  before_action :set_event, except: [:create, :index, :active_events]
 
   def index
     @events = if is_admin? 
@@ -7,7 +7,8 @@ class EventsController < ApplicationController
                   else
                     current_user.events.order('created_at DESC')
                   end
-    return json_response({ events: @events })
+    return json_response({ events: @events }) unless @events.empty?
+    json_response({ message: Message.records_not_found('events') })
   end
 
   def active_events

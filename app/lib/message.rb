@@ -3,6 +3,10 @@ class Message
     "Sorry, #{record} not found."
   end
 
+  def self.records_not_found(records= 'records')
+    "Sorry, you currently do not have any #{records}"
+  end
+
   def self.delete_success(record = 'Record')
     "#{record} was deleted successfully"
   end
