@@ -12,6 +12,13 @@ class EventsController < ApplicationController
   end
 
   def active_events
+    @events = if is_admin? 
+                    Event.where(is_active: true).order('created_at DESC')
+                  else
+                    current_user.events.where(is_active: true).order('created_at DESC')
+                  end
+    return json_response({ events: @events }) unless @events.empty?
+    json_response({ message: Message.records_not_found('active events') })
   end
 
   def create

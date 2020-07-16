@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   post 'login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
   resources :users, only: %i(show update index)
-  resources :events
+  get 'events/active_events', to: 'events#active_events'
   get 'events/:id/url', to: 'events#generate_invitation_url'
   get 'events/:id/invitation', to: 'events#event_invitation'
+  resources :events
 end
