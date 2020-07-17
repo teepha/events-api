@@ -271,7 +271,7 @@ Base_URL -> ```localhost:3000```
   ```
 
 ## Contributing
-* Fork it: [Fork the Automart-API project](https://github.com/teepha/events-api/fork)
+* Fork it: [Fork the Events-API project](https://github.com/teepha/events-api/fork)
 * Create your feature branch (`git checkout -b my-new-feature`)
 * Commit your changes (`git commit -am 'Add some feature'`)
 * Push to the branch (`git push origin my-new-feature`)
