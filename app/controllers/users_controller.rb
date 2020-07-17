@@ -5,8 +5,7 @@ class UsersController < ApplicationController
   def index
     return json_response({ error: Message.unauthorized }, 403) unless is_admin?
     @users = User.all.order('created_at DESC') 
-    return render json: @users, adapter: :json unless @users.empty?
-    json_response({ message: Message.records_not_found('users') })
+    render json: @users, adapter: :json
   end
 
   def create
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     return json_response({ error: Message.unauthorized }, 403) unless @user.id == current_user.id || is_admin?
-    render json: @user
+    render json: @user, adapter: :json
   end
 
   def update
