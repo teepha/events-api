@@ -17,6 +17,8 @@ class Event < ApplicationRecord
       elsif start_time > end_time
         errors.add(:time, "Start date/time should be less than End date/time")
       end
+    rescue StandardError => e
+      self.errors.add(:time, e.message)
     end
   end
 
