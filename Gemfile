@@ -21,6 +21,8 @@ gem 'jwt'
 gem 'hirb', '~> 0.7.3'
 # Active Record Serializer
 gem 'active_model_serializers', '~> 0.10.0'
+# Coveralls
+gem 'coveralls', require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
