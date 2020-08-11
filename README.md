@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/teepha/events-api.svg?branch=develop)](https://travis-ci.org/teepha/events-api)
 [![Coverage Status](https://coveralls.io/repos/github/teepha/events-api/badge.svg?branch=develop)](https://coveralls.io/github/teepha/events-api?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/63daf80b4f341c1fa1f4/maintainability)](https://codeclimate.com/github/teepha/events-api/maintainability)
 
 # Events-API
 ## Introduction
