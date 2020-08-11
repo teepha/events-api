@@ -28,4 +28,7 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore coveralls configuration and coverage folder
 .coveralls.yml
+coverage/
