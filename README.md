@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/teepha/events-api.svg?branch=develop)](https://travis-ci.org/teepha/events-api)
+
 # Events-API
 ## Introduction
 An event ticketing platform that allow users to create events and go live (selling paid or free tickets) in under five minutes.
